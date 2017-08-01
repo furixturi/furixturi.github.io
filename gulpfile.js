@@ -8,15 +8,19 @@ var gulp = require('gulp'),
 gulp.task('sass', function() {
     gulp.src(['src/scss/*.scss',
             'src/components/*/scss/*.scss'])
-        .pipe(concat('styles.scss'))
-        .pipe(sass())
+        .pipe(sourcemaps.init())
+            .pipe(concat('styles.scss'))
+            .pipe(sass())
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('src/assets'))
 });
 
 gulp.task('js', function() {
     gulp.src(['src/js/*.js',
         'src/components/*/js/*.js'])
-        .pipe(concat('bundle.js'))
+        .pipe(sourcemaps.init())
+            .pipe(concat('bundle.js'))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('src/assets'))
 })
 
@@ -48,7 +52,7 @@ gulp.task('buildCSS', function() {
             .pipe(concat('styles.scss'))        
             .pipe(sass({outputStyle: 'compressed'}))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('dist/assets'))
+        .pipe(gulp.dest('./assets'))
 });
 
 gulp.task('buildJS', function() {
@@ -58,25 +62,25 @@ gulp.task('buildJS', function() {
             .pipe(concat('bundle.js'))
             .pipe(uglify())
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('dist/assets'))
+        .pipe(gulp.dest('./assets'))
 });
 
-gulp.task('copyHTML', function(){
+ gulp.task('copyHTML', function(){
     gulp.src(['src/index.html'])
-        .pipe(gulp.dest('dist'))
-});
+        .pipe(gulp.dest('./'))
+}); 
 
-gulp.task('copyFonts', function() {
+ gulp.task('copyFonts', function() {
     gulp.src(['src/assets/fonts/*.*'])
-        .pipe(gulp.dest('dist/assets/fonts'))
+        .pipe(gulp.dest('./assets/fonts'))
 });
 
 gulp.task('copyImages', function() {
     gulp.src(['src/assets/images/*.*'])
-        .pipe(gulp.dest('dist/assets/images'))
-});
+        .pipe(gulp.dest('./assets/images'))
+}); 
 
 
-gulp.task('build', ['buildCSS', 'buildJS', 'copyHTML','copyFonts', 'copyImages']);
+gulp.task('build', ['buildCSS', 'buildJS' , 'copyHTML','copyFonts', 'copyImages' ]);
 
 gulp.task('default', ['webserver', 'watchJS', 'watchCSS']);
