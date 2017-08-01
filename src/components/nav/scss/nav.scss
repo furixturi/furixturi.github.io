@@ -1,0 +1,162 @@
+nav {   
+
+    z-index: 5;
+    transition: all 0.8s cubic-bezier(0.935, -0.600, 0.030, 1.650);
+    
+    li {
+        display: inline-block;
+    }
+
+    li a {
+        color: $text-color;
+        text-decoration: none;
+        display: block;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.320, 1.275); /* easeOutBack */
+
+        &:hover,
+        &.changing {
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            // color: white;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        &:active,
+        &.active {
+            color: white;
+            background: black;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+        }        
+    }
+
+    .slogan {
+        margin-top: 30px;
+        margin-left: 40px;
+    }
+    
+// mobile
+    @media only screen and (max-width: 767px) {
+        position: absolute;
+        width: 100vw;
+        height: calc(100vh - #{$mobile-ui-bar-height}); //fix mobile browser problem of viewport height changing
+        min-height: $full-viewport-min-height-mobile  - $mobile-ui-bar-height;
+        max-height: $ideal-viewport-height * 1px;
+
+        > .container {
+            height: 100%;
+            min-height: $full-viewport-min-height-mobile - $mobile-ui-bar-height;
+        }
+        
+        .slogan {
+            display: none;
+        }
+
+        li {
+            display: block;
+            position: absolute;            
+
+            &.bottom { //PROJECTS
+                bottom: 40px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            &.left { //LAB
+                transform-origin: 0 100%;
+                transform: rotate(90deg) translateX(-100%);
+                left: 20px;
+                top: 50%;
+            }
+
+            &.right {//ABOUT                
+                transform-origin: 100% 100%;
+                transform: rotate(-90deg) translateX(80%);
+                right: 20px;
+                top: 50%;
+            }
+
+            a {
+                color: black;
+                &:hover,
+                &.changing,
+                &:active,
+                &.active {
+                    font-weight: 400;
+                    color: black;
+                    background: none;
+                }
+            }
+        }
+
+        a {
+            font-family: $roboto;
+            @include fontSize(18px);
+            text-transform: uppercase;
+            color: black;
+            padding: 5px 8px 5px 10px;
+            border: 1px solid black;
+            letter-spacing: 0.2em;
+        }
+    }
+
+    // mobile landscape
+    @media only screen and (max-width: 736px) and (orientation: landscape) { 
+        min-height: $full-viewport-min-height-mobile;
+        > .container {
+            min-height: $full-viewport-min-height-mobile;
+        }
+    }
+
+// tablet and desktop
+    @media only screen and (min-width: 768px) {
+
+        * {
+            overflow: hidden;
+        }
+
+        position: fixed;
+        background: rgb(255, 255, 255);
+        // border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+        transform-origin: top;
+        transform: perspective(800px) rotate3d(1, 0, 0, 90deg);
+
+        &.reveal {
+            transform: perspective(800px) rotate3d(1, 0, 0, 0deg);
+        }
+
+        &.hide {
+            transform: perspective(800px) translateY(-100%);
+            opacity: 0;
+            transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550); /* easeInOutBack */
+        }
+        
+        @include clearfix;
+        width: 100vw;
+        .slogan {
+            float: left;
+            @include fontSize(14px);
+            .name {
+                @include fontSize(18px);
+            }
+        }
+        ul {
+            float: right;
+            margin-top: 20px;
+            padding-right: 50px;
+        }
+
+        li {
+            margin-left: 20px;
+            a {
+                @include fontSize(14px);
+                padding: 10px;
+
+                
+            }
+        }
+    }
+}

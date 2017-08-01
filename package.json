@@ -1,0 +1,12 @@
+{
+  "name": "portfolio2017",
+  "version": "1.0.0",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-webserver": "^0.9.1",
+    "gulp-uglify": "",
+    "gulp-sourcemaps": ""
+  }
+}
