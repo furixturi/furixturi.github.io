@@ -92,7 +92,17 @@ html {
     transition: all 200ms ease; //smooth everything
 }
 
+html.no-scroll {
+    overflow: hidden;
 
+    .overlay > .container {
+        height: 100vh !important;
+    }
+
+    #projects article:nth-child(odd) .info.project {
+        top: auto !important;
+    }
+}
 
 @media only screen and (min-width: 768px) {
 
