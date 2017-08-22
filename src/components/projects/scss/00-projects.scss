@@ -441,7 +441,7 @@
             img {
                 width: $key-visual-width-detail;
                 height: $key-visual-height-detail;
-                
+                backface-visibility: hidden;
                 @media only screen and (min-width: $hd-desktop-min) {
                     width: $hd-key-visual-width-detail;
                     height: $hd-key-visual-height-detail;
