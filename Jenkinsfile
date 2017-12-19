@@ -13,6 +13,6 @@ node {
         input "Does the staging environment look ok?"
     }
     stage('Deploy - Production') {
-        sh './deploy production'
+        echo 'deploying'
     }
 }
