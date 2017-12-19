@@ -1,14 +1,11 @@
 pipeline {
-    agent { docker 'node:6.10' }
+    agent any
     stages {
-        stage('build') {
-            steps {
-                sh 'npm --version'
-                sh 'echo "Hello World"'
-                sh '''
-                    echo "Multiline shell steps works too"
-                    ls -lah
-                '''
+        stage('Deploy') {
+            timeout(time: 1, unit: 'MINUTES') {
+                retry(5) {
+                    sh './flakey-deploy.sh'
+                }
             }
         }
     }
