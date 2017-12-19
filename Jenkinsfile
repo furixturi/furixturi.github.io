@@ -1,11 +1,17 @@
 node {
-    stage('Build') {
-        echo 'Building'
+    /* "Build" and "Test" stages omitted */
+
+    stage('Deploy - Staging') {
+        sh './deploy staging'
+        sh './run-smoke-tests'
     }
-    stage('Test') {
-        echo 'Testing'
+
+    stage('Sanity check') {
+        input "Does the staging environment look ok?"
     }
-    stage('Deploy') {
-        echo 'Deploying'
+
+    stage('Deploy - Production') {
+        sh './deploy production'
     }
 }
+
