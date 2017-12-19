@@ -1,0 +1,140 @@
+/* home--------------*/
+#home {
+
+    h1 {
+        font-weight: 100;
+        span {
+            display: block;
+        }
+        
+        margin: 0 auto;
+    }
+    
+    .name {
+        font-weight: 600;
+    }
+
+    img#face {
+        display: block;
+        width: 33.333333%;
+        border-radius: 50%;
+        margin: 0 auto;
+    }
+
+    // mobile
+    @media only screen and (max-width: 767px) {
+        height: calc(100vh - #{$mobile-ui-bar-height});
+        min-height: $full-viewport-min-height;
+        max-height: $ideal-viewport-height * 1px;
+
+        .scrollCTA {
+            display: none;
+        }
+
+        img#face {
+            max-width: 250px;
+            margin-top: 80px; 
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            line-height: lineHeight(20, 27);
+
+            .greeting {
+                @include fontSize(30px);
+            }
+
+            .preps, .residence, .role {
+                @include fontSize(20px);
+            }
+
+            .name {
+                @include fontSize(32px);
+                line-height: lineHeight(32,42);
+            }
+
+            .role {
+                line-height: lineHeight(20, 30);
+            }
+
+            .craft {
+                @include fontSize(26px);
+                line-height: lineHeight(52, 64);
+            }
+
+        }
+    }
+
+    // tablet and desktop
+    @media only screen and (min-width: 768px) {
+
+        img#face {
+            max-width: 160px;
+            margin-top: 200px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            
+            line-height: lineHeight(28, 36);
+            max-width: 392px;
+        }
+
+        .greeting, .preps, .residence, .role {
+            display: inline;
+            @include fontSize(24px);
+        }
+
+        .name {
+            font-weight: 400;
+            @include fontSize(50px);
+            line-height: lineHeight(64, 82);
+        }
+
+        .craft {
+            @include fontSize(36px);
+        }
+
+        .scrollCTA {
+            color: black;
+            display: block;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.320, 1.275); /* easeOutBack */
+
+            .icon {
+                display: block;
+                text-align: center;
+                font-size: 30px;
+                margin-top: 10px;
+                letter-spacing: 0;
+            }
+
+            &:hover {
+                letter-spacing: 0.4em;
+            }
+        }
+
+    }
+
+    // hd desktop
+    @media only screen and (min-width: 1024px) {
+        h1 {
+            @include fontSize(28px); 
+            max-width: 456px;           
+        }
+        .name {
+            @include fontSize(64px);
+        }
+        .craft {
+            @include fontSize(48px);
+        }
+    }
+}
+

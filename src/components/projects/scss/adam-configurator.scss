@@ -1,0 +1,14 @@
+
+#adam-visualizer {
+    background: $theme-color-adam-configurator;
+    
+
+    // &.detail .overlay {
+    //     background: #0a0206;        
+    // }
+    @media only screen and (max-width: 1023px) {
+        .info.more-info {
+                background: transparentize($theme-color-adam-configurator, 0.25);
+        }
+    }
+}
