@@ -2,8 +2,7 @@ node {
     /* "Build" and "Test" stages omitted */
 
     stage('Deploy - Staging') {
-        sh './deploy staging'
-        sh './run-smoke-tests'
+        echo 'deploy staging'
     }
 
     stage('Sanity check') {
@@ -11,7 +10,7 @@ node {
     }
 
     stage('Deploy - Production') {
-        sh './deploy production'
+       echo 'deploy production'
     }
 }
 
